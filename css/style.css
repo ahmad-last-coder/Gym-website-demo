@@ -36,11 +36,13 @@ a {
     color: inherit;
 }
 
-.container {
+.nav-container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .btn {
@@ -496,6 +498,9 @@ a {
     padding: 100px 0;
     background: url('../images/membership-bg.jpg') no-repeat center center/cover;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .membership-preview::before {
@@ -509,6 +514,7 @@ a {
 }
 
 .membership-content {
+    width: 80vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
@@ -951,4 +957,216 @@ a {
 
 .legal-links a:hover {
     color: var(--primary);
+}
+
+/* Mobile First Responsive Styles */
+@media (max-width: 1200px) {
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+    
+    .membership-content {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .slide-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .member-photo {
+        margin-bottom: 20px;
+    }
+    
+    .member-quote p::before {
+        left: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(10, 10, 20, 0.95);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 40px;
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        left: 0;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    /* Membership */
+    .membership-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-right {
+        margin-top: 40px;
+    }
+    
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Features */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .legal-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Features */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Testimonials */
+    .member-quote p {
+        font-size: 1rem;
+    }
+    
+    .member-quote p::before {
+        font-size: 3rem;
+        top: -20px;
+    }
+    
+    /* CTA */
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    /* General */
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+    }
+}
+
+/* Mobile-Specific Enhancements */
+@media (hover: none) {
+    /* Disable hover effects on touch devices */
+    .btn-primary:hover, .btn-secondary:hover, 
+    .feature-card:hover, .stat-item:hover,
+    .membership-card:hover {
+        transform: none !important;
+    }
+    
+    /* Make sure tap targets are properly sized */
+    a, button, input, .menu-toggle {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Adjust form inputs for mobile */
+    input, textarea, select {
+        font-size: 16px; /* Prevents iOS zoom */
+    }
+}
+
+/* Device Orientation Handling */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        height: auto;
+        padding: 100px 0;
+    }
+    
+    .hero-content {
+        padding-top: 80px;
+    }
+    
+    .scroll-down {
+        display: none;
+    }
+}
+
+/* Foldable Devices Support */
+@media (max-width: 400px) and (max-height: 700px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+    }
 }
